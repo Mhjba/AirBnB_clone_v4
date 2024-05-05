@@ -1,17 +1,18 @@
 $(document).ready(function () {
+
   $('input[type=checkbox]').click(function () {
-    const myListName = [];
-    const myId = [];
+    const amenity_name = [];
+    const amenity_id = [];
     $('input[type=checkbox]:checked').each(function () {
-      myListName.push($(this).attr('data-name'));
-      myId.push($(this).attr('data-id'));
+      amenity_name.push($(this).attr('data-name'));
+      amenity_id.push($(this).attr('data-id'));
     });
-    if (myListName.length === 0) {
+    if (amenity_name.length === 0) {
       $('.amenities h4').html('&nbsp;');
     } else {
-      $('.amenities h4').text(myListName.join(', '));
+      $('.amenities h4').text(amenity_name.join(', '));
     }
-    console.log(myId);
+    console.log(amenity_id);
   });
 });
 
@@ -37,23 +38,27 @@ $.ajax({
   success: function (places) {
     for (let i = 0; i < places.length; i++) {
       $('.places').append(`<article>
-<div class="title_box">
-<h2> ${places[i].name}</h2>
-<div class="price_by_night"> ${places[i].price_by_night} </div>
-</div>
-<div class="information">
-<div class="max_guest">${places[i].max_guest}
-${places[i].max_guest > 1 ? 'Guests' : 'Guest'} </div>
-<div class="number_rooms">${places[i].number_rooms}
-${places[i].number_rooms > 1 ? 'Bedrooms' : 'Bedroom'}  </div>
-<div class="number_bathrooms">${places[i].number_bathrooms}
-${places[i].number_bathrooms > 1 ? 'Bathrooms' : 'Bathroom'}  </div>
-</div>
-<div class="user">
-</div>
-<div class="description">
-${places[i].description}
-</div>
+      <div class="title_box">
+        <h2> ${places[i].name}</h2>
+        <div class="price_by_night"> ${places[i].price_by_night}
+        </div>
+      </div>
+      <div class="information">
+        <div class="max_guest">${places[i].max_guest}
+          ${places[i].max_guest > 1 ? 'Guests' : 'Guest'}
+        </div>
+        <div class="number_rooms">${places[i].number_rooms}
+          ${places[i].number_rooms > 1 ? 'Bedrooms' : 'Bedroom'} 
+        </div>
+        <div class="number_bathrooms">${places[i].number_bathrooms}
+          ${places[i].number_bathrooms > 1 ? 'Bathrooms' : 'Bathroom'}
+        </div>
+      </div>
+      <div class="user">
+      </div>
+      <div class="description">
+        ${places[i].description}
+      </div>
 </article>
 `);
     }
