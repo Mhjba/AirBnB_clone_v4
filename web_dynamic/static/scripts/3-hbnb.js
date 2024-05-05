@@ -37,7 +37,8 @@ $.ajax({
   contentType: 'application/json; charset=utf-8',
   success: function (places) {
     for (let i = 0; i < places.length; i++) {
-      $('.places').append(`<article>
+      $('.places').append(`
+    <article>
       <div class="title_box">
         <h2> ${places[i].name}</h2>
         <div class="price_by_night"> ${places[i].price_by_night}
@@ -59,7 +60,7 @@ $.ajax({
       <div class="description">
         ${places[i].description}
       </div>
-</article>
+    </article>
 `);
     }
   },
